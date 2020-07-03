@@ -1,0 +1,7 @@
+*/*/*.o
+*/*.o
+*.o
+*.sh
+Cub3D
+.vscode
+valgrind*
