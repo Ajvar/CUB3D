@@ -6,13 +6,12 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:00:53 by jcueille          #+#    #+#             */
-/*   Updated: 2020/07/03 14:43:48 by jcueille         ###   ########.fr       */
+/*   Updated: 2020/07/06 14:51:30 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
-
 
 typedef struct		s_map
 {

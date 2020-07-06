@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 16:25:32 by jcueille          #+#    #+#             */
-/*   Updated: 2020/06/29 17:54:02 by jcueille         ###   ########.fr       */
+/*   Updated: 2020/07/06 14:58:16 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,9 @@ void		ft_save(t_info *info_map, t_mlx *mlx)
 	ft_init_master(info_map, mlx, &player, &master);
 	ft_init_pos_player(&master, &player);
 	master.save = 1;
-	/*if ((mlx->win = mlx_new_window(mlx->ptr, info_map->rx,
-		info_map->ry, "Save")) == NULL)
-		ft_error("window init failed");*/
 	ft_init_texture(&master, texture, 64, 64);
 	ft_print_img(&master);
 	ft_write_bmp_file(&master);
+	mlx_destroy_image(master.mlx->ptr, master.mlx->img);
 	ft_exit_prog(&master);
 }

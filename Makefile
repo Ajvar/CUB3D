@@ -33,7 +33,7 @@ OBJS = ${SRCS:.c=.o}
 CC = gcc
 
 $(NAME): ${OBJS}  ${LIBMLX_PATH}/libmlx.a
-	 ${CC} ${CFLAGS} ${SRCS} -L ${LIBMLX_PATH} -lm -lmlx  -lX11 -lXext -o ${NAME} 
+	 ${CC} ${CFLAGS} ${SRCS} -L ${LIBMLX_PATH} -lm -lmlx  -lX11 -lXext -o ${NAME}
 all: ${NAME}
 
 ${LIBMLX_PATH}/libmlx.a:

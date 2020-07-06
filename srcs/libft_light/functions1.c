@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:27:23 by jcueille          #+#    #+#             */
-/*   Updated: 2020/06/22 16:49:02 by jcueille         ###   ########.fr       */
+/*   Updated: 2020/07/06 14:49:27 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,15 @@ t_map		*ft_lstlast(t_map *lst)
 t_map		*ft_lstnew(char *content)
 {
 	t_map	*res;
+	int		len;
 
 	if ((res = malloc(sizeof(t_map))))
 	{
-		if (!(res->line = malloc(ft_strlen(content) + 1)))
+		len = ft_strlen(content);
+		if (!(res->line = malloc(len + 1)))
 			ft_error("Error malloc struct");
-		ft_memcpy(res->line, content, ft_strlen(content) + 1);
-		res->length = ft_strlen(content);
+		ft_memcpy(res->line, content, len + 1);
+		res->length = len;
 		res->next = NULL;
 	}
 	return (res);
