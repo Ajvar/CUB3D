@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/05 18:22:04 by jcueille          #+#    #+#             */
-/*   Updated: 2020/06/24 15:27:50 by jcueille         ###   ########.fr       */
+/*   Updated: 2020/07/09 16:38:53 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void		ft_map(t_info *info_map, char *line)
 	***	Check ID et appelle la bonne fonction
 */
 
-void			ft_check_id(char *line, t_info *info_map)
+void			ft_check_id(char *line, t_info *info_map, int fd)
 {
 	int			i;
 
@@ -66,7 +66,7 @@ void			ft_check_id(char *line, t_info *info_map)
 		ft_map(info_map, line);
 	}
 	else if (line[i] != '\n' && line[i] != '\0')
-		ft_error("wrong character");
+		ft_error_parse("wrong character", info_map, line, fd);
 }
 
 void			ft_parse(t_info *info_map, int *fd)
@@ -75,10 +75,10 @@ void			ft_parse(t_info *info_map, int *fd)
 
 	while (get_next_line(*fd, &line) != 0)
 	{
-		ft_check_id(line, info_map);
+		ft_check_id(line, info_map, *fd);
 		free(line);
 	}
-	ft_check_id(line, info_map);
+	ft_check_id(line, info_map, *fd);
 	close(*fd);
 	info_map->map = ft_map_filler(info_map);
 	ft_is_map_valid(info_map);

@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:02:46 by jcueille          #+#    #+#             */
-/*   Updated: 2020/06/29 17:46:36 by jcueille         ###   ########.fr       */
+/*   Updated: 2020/07/09 16:38:07 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef enum	e_keycode {
 void	ft_res_correction(t_info *map, t_mlx *mlx);
 void	ft_error(char *s);
 void	ft_space_skip(char *s, int *i);
-void	ft_check_id(char *line, t_info *info_map);
+void	ft_check_id(char *line, t_info *info_map, int fd);
 char	**ft_map_filler(t_info *info_map);
 void	ft_is_map_valid(t_info *info_map);
 void	ft_error_map_fill(char **tmp, char *s, int i);
@@ -95,5 +95,7 @@ void	ft_draw_texture_sn(t_master *m, t_texture *texture,
 t_text_info *text_i, int x);
 void	ft_draw_texture_ew(t_master *m, t_texture *texture,
 t_text_info *text_i, int x);
+int					ft_exit_prog_esc(t_master *m);
+void ft_error_parse(char *s, t_info *info_map, char *line, int fd);
 
 #endif

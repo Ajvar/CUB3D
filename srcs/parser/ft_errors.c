@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 16:31:05 by jcueille          #+#    #+#             */
-/*   Updated: 2020/07/06 16:50:56 by jcueille         ###   ########.fr       */
+/*   Updated: 2020/07/09 16:40:26 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,29 @@ void		ft_error_map_fill(char **tmp, char *s, int i)
 	ft_error(s);
 }
 
-/*void ft_errors_parse(char *s, t_info *info)
+void ft_error_parse(char *s, t_info *info_map, char *line, int fd)
 {
-	if (info->map_struct)
+	t_map	*ptr;
+	while (get_next_line(fd, &line) != 0)
 	{
-
+		ft_check_id(line, info_map, fd);
+		free(line);
 	}
-}*/
+	ft_check_id(line, info_map, fd);
+	free(line);
+	close(fd);
+	write(2, "Error:\n", 7);
+	write(2, s, ft_strlen(s));
+	if (info_map->map_struct)
+	{
+		while (info_map->map_struct)
+		{
+			ptr = info_map->map_struct->next;
+			free(info_map->map_struct->line);
+			free(info_map->map_struct);
+			info_map->map_struct = ptr;
+		}
+	}
+	exit (0);
+
+}
