@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 16:12:58 by jcueille          #+#    #+#             */
-/*   Updated: 2020/07/06 14:44:51 by jcueille         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:58:45 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,12 @@ static void	ft_check_first_last(char *s)
 	int		i;
 
 	i = -1;
-	while (s[++i])
-		if (s[i] != '1' && s[i] != ' ')
-			ft_error("wrong map (first or last line)");
+	if (s)
+	{
+		while (s[++i])
+			if (s[i] != '1' && s[i] != ' ')
+				ft_error("wrong map (first or last line)");
+	}
 }
 
 static void	ft_is_map_valid_bis(t_info *info_map, int *i, int *k)
@@ -82,8 +85,8 @@ void		ft_is_map_valid(t_info *info_map)
 	i = 0;
 	while (i < info_map->len_y)
 	{
-		k = 0;
-		while (info_map->map[i][k])
+		k = -1;
+		while (info_map->map[i][++k])
 		{
 			if (info_map->map[i][k] == ' ')
 				ft_is_map_valid_bis(info_map, &i, &k);
@@ -92,10 +95,11 @@ void		ft_is_map_valid(t_info *info_map)
 			else if (info_map->map[i][k] != '1' && info_map->map[i][k] != '2'
 			&& info_map->map[i][k] != '0')
 				ft_error("wrong character in the map.");
-			k++;
 		}
 		i++;
 	}
+	if (i < 1)
+		ft_error_free("Empty map", info_map);
 	ft_check_first_last(info_map->map[0]);
 	ft_check_first_last(info_map->map[i - 1]);
 	if (info_map->player_start == '0')
