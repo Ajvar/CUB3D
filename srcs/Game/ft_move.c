@@ -12,6 +12,8 @@
 
 #include "../../includes/cub3d.h"
 
+static int ft_hit(char c);
+
 void	ft_move_player_mini_map(t_master *m)
 {
 	m->player->x = (int)(m->player->pos_x * ((m->info->rx / 3) /
@@ -32,20 +34,20 @@ void	ft_player_pos_x(t_master *m, t_player *p)
 {
 	if (m->move->left == 1)
 	{
-		if (!ft_hit(m->info->map[(int)(p->pos_y)][(int)(p->pos_x - m->ray->plane_x
-		* p->ms)]))
+		if (ft_hit(m->info->map[(int)(p->pos_y)][(int)(p->pos_x - m->ray->plane_x
+		* p->ms)]) == 0)
 			p->pos_x = p->pos_x - m->ray->plane_x * p->ms;
-		if (m->info->map[(int)(p->pos_y - m->ray->plane_y * p->ms)]
-		[(int)(p->pos_x)] != '1')
+		if (ft_hit(m->info->map[(int)(p->pos_y - m->ray->plane_y * p->ms)]
+		[(int)(p->pos_x)]) == 0)
 			p->pos_y = p->pos_y - m->ray->plane_y * p->ms;
 	}
 	if (m->move->right == 1)
 	{
-		if (m->info->map[(int)(p->pos_y)][(int)(p->pos_x + m->ray->plane_x
-		* p->ms)] != '1')
+		if (ft_hit(m->info->map[(int)(p->pos_y)][(int)(p->pos_x + m->ray->plane_x
+		* p->ms)]) == 0)
 			p->pos_x = p->pos_x + m->ray->plane_x * p->ms;
-		if (m->info->map[(int)(p->pos_y + m->ray->plane_y * p->ms)]
-		[(int)(p->pos_x)] != '1')
+		if (ft_hit(m->info->map[(int)(p->pos_y + m->ray->plane_y * p->ms)]
+		[(int)(p->pos_x)]) == 0)
 			p->pos_y = p->pos_y + m->ray->plane_y * p->ms;
 	}
 }
@@ -83,20 +85,20 @@ void	ft_player_pos_cam(t_master *m, t_player *p)
 {
 	if (m->move->foward == 1)
 	{
-		if (m->info->map[(int)(p->pos_y)][(int)(p->pos_x + p->dir_x
-		* p->ms)] != '1')
+		if (ft_hit(m->info->map[(int)(p->pos_y)][(int)(p->pos_x + p->dir_x
+		* p->ms)]) == 0)
 			p->pos_x += p->dir_x * p->ms;
-		if (m->info->map[(int)(p->pos_y + p->dir_y * p->ms)]
-		[(int)(p->pos_x)] != '1')
+		if (ft_hit(m->info->map[(int)(p->pos_y + p->dir_y * p->ms)]
+		[(int)(p->pos_x)]) == 0)
 			p->pos_y += p->dir_y * p->ms;
 	}
 	if (m->move->retreat == 1)
 	{
-		if (m->info->map[(int)(p->pos_y)][(int)(p->pos_x - p->dir_x
-		* p->ms)] != '1')
+		if (ft_hit(m->info->map[(int)(p->pos_y)][(int)(p->pos_x - p->dir_x
+		* p->ms)]) == 0)
 			p->pos_x -= p->dir_x * p->ms;
-		if (m->info->map[(int)(p->pos_y - p->dir_y * p->ms)]
-		[(int)(p->pos_x)] != '1')
+		if (ft_hit(m->info->map[(int)(p->pos_y - p->dir_y * p->ms)]
+		[(int)(p->pos_x)]) == 0)
 			p->pos_y -= p->dir_y * p->ms;
 	}
 	ft_player_pos_x(m, p);
@@ -110,6 +112,6 @@ void	ft_player_pos_cam(t_master *m, t_player *p)
 static int ft_hit(char c)
 {
 	if (c == '1' || c == '2')
-		return (1)
-	return (0)
+		return (1);
+	return (0);
 }
