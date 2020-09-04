@@ -32,8 +32,8 @@ void	ft_player_pos_x(t_master *m, t_player *p)
 {
 	if (m->move->left == 1)
 	{
-		if (m->info->map[(int)(p->pos_y)][(int)(p->pos_x - m->ray->plane_x
-		* p->ms)] != '1')
+		if (!ft_hit(m->info->map[(int)(p->pos_y)][(int)(p->pos_x - m->ray->plane_x
+		* p->ms)]))
 			p->pos_x = p->pos_x - m->ray->plane_x * p->ms;
 		if (m->info->map[(int)(p->pos_y - m->ray->plane_y * p->ms)]
 		[(int)(p->pos_x)] != '1')
@@ -105,4 +105,11 @@ void	ft_player_pos_cam(t_master *m, t_player *p)
 		p->ms = 0.12;
 	if (m->move->sprint == 0)
 		p->ms = 0.05;
+}
+
+static int ft_hit(char c)
+{
+	if (c == '1' || c == '2')
+		return (1)
+	return (0)
 }
