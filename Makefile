@@ -3,7 +3,7 @@ LIBMLX_PATH = ./srcs/mlx
 LIBFT_PATH = ./srcs/libft_light/
 PARSER_PATH = ./srcs/parser/
 GAME_PATH = ./srcs/Game/
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g 
 SRCS =	${LIBFT_PATH}functions1.c \
 		${LIBFT_PATH}ft_utils.c \
 		${LIBFT_PATH}functions2.c \

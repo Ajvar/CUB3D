@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:38:24 by jcueille          #+#    #+#             */
-/*   Updated: 2020/07/09 13:52:48 by jcueille         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:21:08 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,17 @@ int					ft_exit_prog(t_master *m)
 		free(m->info->map);
 	}
 	mlx_terminate(m);
-	if (m->info->map_struct)
+	tmp = m->info->map_struct;
+	while (m->info->map_struct != NULL)
 	{
 		tmp = m->info->map_struct;
-		while (m->info->map_struct != NULL)
-		{
-			tmp = m->info->map_struct;
-			m->info->map_struct = m->info->map_struct->next;
-			free(tmp->line);
-			free(tmp);
-		}
+		m->info->map_struct = m->info->map_struct->next;
+		free(tmp->line);
+		free(tmp);
 	}
 	exit(0);
-
 }
+
 static void			mlx_terminate_esc(t_master *m)
 {
 	struct s_xvar	*xvar;
@@ -95,8 +92,8 @@ static void			mlx_terminate_esc(t_master *m)
 	xvar = m->mlx->ptr;
 	if (xvar->private_cmap)
 		XFreeColormap(xvar->display, (Colormap)xvar->private_cmap);
-
 }
+
 int					ft_exit_prog_esc(t_master *m)
 {
 	t_map			*tmp;
@@ -122,5 +119,5 @@ int					ft_exit_prog_esc(t_master *m)
 		free(tmp->line);
 		free(tmp);
 	}
-	exit(0);	
+	exit(0);
 }

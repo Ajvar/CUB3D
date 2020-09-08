@@ -29,7 +29,7 @@ static	int		ft_length(char const *s, char c)
 	return (len);
 }
 
-static	int		ft_word_count(char const *s, char c)
+static	int		ft_word_count(char const *s, char c, int *count)
 {
 	int			len;
 	int			i;
@@ -41,7 +41,10 @@ static	int		ft_word_count(char const *s, char c)
 		if (s[i] != c && i == 0)
 			len++;
 		else if (s[i] != c && s[i - 1] == c)
+		{
 			len++;
+			(*count)++;
+		}
 		i++;
 	}
 	return (len);
@@ -101,14 +104,14 @@ int word_count, char **words)
 	return (words);
 }
 
-char			**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c, int *count)
 {
 	int			word_count;
 	char		**words;
 
 	if (!s)
 		return (NULL);
-	word_count = ft_word_count(s, c);
+	word_count = ft_word_count(s, c, count);
 	if (!(words = (char **)malloc(sizeof(char *) * (word_count + 1))))
 		return (NULL);
 	words = ft_alloc(s, c, word_count, words);

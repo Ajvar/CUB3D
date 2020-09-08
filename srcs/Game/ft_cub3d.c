@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 16:42:02 by jcueille          #+#    #+#             */
-/*   Updated: 2020/07/09 13:52:57 by jcueille         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:16:43 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int		ft_game(t_info *map, t_mlx *mlx, int save)
 		return (0);
 	mlx_hook(mlx->win, KEYPRESS, KEYPRESS_MASK, ft_key_press, &move);
 	mlx_hook(mlx->win, KEYRELEASE, KEYRELEASE_MASK, ft_key_release, &move);
-	mlx_hook(mlx->win, 17, 1L<<17, ft_exit_prog_esc, &master);
+	mlx_hook(mlx->win, 17, 1L << 17, ft_exit_prog_esc, &master);
 	mlx_loop_hook(mlx->ptr, ft_print_img, &master);
 	mlx_loop(mlx->ptr);
 	return (0);

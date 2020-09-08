@@ -68,7 +68,7 @@ void	ft_free_tab(char **tab);
 int		ft_rgb_space(char **tab, int i);
 char	*ft_strcpy(char *dest, char *src);
 int		get_next_line(int fd, char **line);
-char	**ft_split(char const *s, char c);
+char	**ft_split(char const *s, char c, int *count);
 int		ft_pos_check(char c);
 int		ft_print_img(t_master *master);
 int		ft_resolution(char *s, t_info *info_map);

@@ -76,17 +76,22 @@ int			ft_texture_path_north_south(char *s, t_info *info_map)
 int			ft_convert_rgb_to_integer(char *s)
 {
 	int		i;
+	int k;
 	int		nb[4];
 	char	**tab;
 
 	i = 1;
+	k = 0;
 	ft_space_skip(s, &i);
-	tab = ft_split(&s[i], ',');
-	i = 0;
-	while (tab[i])
-		i++;
-	if (i != 3)
-		ft_error("incorrect color format");
+	tab = ft_split(&s[i], ',', &k);
+	if (k > 2)
+		ft_error("wrong color format");
+	//i = 0;
+	k = 0;
+	//while (tab[i])
+	//	i++;
+	//if (i != 3)
+	//	ft_error("incorrect color format");
 	i = -1;
 	while (++i < 3)
 	{
@@ -112,3 +117,47 @@ int			ft_colors(char *s, t_info *info_map)
 		return (0);
 	return (1);
 }
+/*
+	space skip
+	tant que isdigit et que < 3 alors add au nombre
+	si pas digit
+		virgule ?
+			si oui i++
+			si non exit
+	quand on a fait 3 fois space skip
+	si s[i] != \0
+*/ 
+/*int			ft_colz(char *s)
+{
+	int		i;
+	int 	k;
+	int		nb[4];
+	char	**tab;
+
+	i = 1;
+	k = 0;
+	ft_space_skip(s, &i);
+
+	while (k < 3)
+	{
+		if (s[i] < 48 || s[i] > 57)
+			ft_error("wrong color format");
+		while ((s[i] > 48 || s[i] < 57))
+			i++;
+		if (s[i] != ',' && k < 3)
+			ft_error("wrong color format");
+		i++;
+		k++;
+	}
+	i = -1;
+	while (++i < 3)
+	{
+		if ((tab[i] == NULL) || ft_isdigit(tab[i]) == -1)
+			ft_error("incorrect color format");
+		else
+			nb[i] = ft_atoi(tab[i]);
+	}
+	ft_free_tab(tab);
+	nb[i] = ft_check_rgb(nb, i);
+	return (nb[i]);
+}*/

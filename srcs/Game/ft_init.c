@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:41:03 by jcueille          #+#    #+#             */
-/*   Updated: 2020/07/09 13:09:53 by jcueille         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:53:52 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_init_struct_infomap(t_info *info_map)
 	info_map->l_map = 0;
 	info_map->len_y = 0;
 	info_map->map_struct = NULL;
-	info_map = NULL;
+	info_map->map = NULL;
 }
 
 void	ft_init_struct_move(t_move *move)
