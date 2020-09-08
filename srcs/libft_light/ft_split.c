@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 15:04:44 by jcueille          #+#    #+#             */
-/*   Updated: 2020/06/22 17:03:55 by jcueille         ###   ########.fr       */
+/*   Updated: 2020/09/08 17:52:24 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static	int		ft_length(char const *s, char c)
 	return (len);
 }
 
-static	int		ft_word_count(char const *s, char c, int *count)
+static	int		ft_word_count(char const *s, char c)
 {
 	int			len;
 	int			i;
@@ -41,10 +41,7 @@ static	int		ft_word_count(char const *s, char c, int *count)
 		if (s[i] != c && i == 0)
 			len++;
 		else if (s[i] != c && s[i - 1] == c)
-		{
 			len++;
-			(*count)++;
-		}
 		i++;
 	}
 	return (len);
@@ -104,14 +101,14 @@ int word_count, char **words)
 	return (words);
 }
 
-char			**ft_split(char const *s, char c, int *count)
+char			**ft_split(char const *s, char c)
 {
 	int			word_count;
 	char		**words;
 
 	if (!s)
 		return (NULL);
-	word_count = ft_word_count(s, c, count);
+	word_count = ft_word_count(s, c);
 	if (!(words = (char **)malloc(sizeof(char *) * (word_count + 1))))
 		return (NULL);
 	words = ft_alloc(s, c, word_count, words);

@@ -3,7 +3,7 @@ LIBMLX_PATH = ./srcs/mlx
 LIBFT_PATH = ./srcs/libft_light/
 PARSER_PATH = ./srcs/parser/
 GAME_PATH = ./srcs/Game/
-CFLAGS = -Wall -Wextra -Werror -g 
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 SRCS =	${LIBFT_PATH}functions1.c \
 		${LIBFT_PATH}ft_utils.c \
 		${LIBFT_PATH}functions2.c \
@@ -13,9 +13,10 @@ SRCS =	${LIBFT_PATH}functions1.c \
 		${PARSER_PATH}ft_errors.c \
 		${PARSER_PATH}parser.c \
 		${PARSER_PATH}ft_map.c \
+		${PARSER_PATH}ft_get_info.c \
+		${PARSER_PATH}ft_resolution.c \
 		${GAME_PATH}ft_cub3d.c \
 		${GAME_PATH}ft_parse_sprite.c \
-		${GAME_PATH}ft_get_info.c \
 		${GAME_PATH}ft_init.c \
 		${GAME_PATH}ft_utils.c \
 		${GAME_PATH}ft_key_input.c \

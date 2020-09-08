@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:37:30 by jcueille          #+#    #+#             */
-/*   Updated: 2020/06/24 15:07:00 by jcueille         ###   ########.fr       */
+/*   Updated: 2020/09/08 17:22:51 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,20 @@ int		ft_texture_path_west_east(char *s, t_info *info_map)
 	int	i;
 
 	i = 2;
-	while (s[i] == ' ')
-		i++;
+	ft_space_skip(s, &i);
 	if (s[0] == 'W')
 	{
 		if (info_map->west_t[0] != '\0')
 			ft_error("duplicate texture west");
 		ft_strcpy(info_map->west_t, &s[i]);
+		ft_trim(info_map->west_t);
 	}
 	else if (s[0] == 'E')
 	{
 		if (info_map->east_t[0] != '\0')
 			ft_error("duplicate texture east");
 		ft_strcpy(info_map->east_t, &s[i]);
+		ft_trim(info_map->east_t);
 	}
 	else if (s[0] == 'S')
 	{

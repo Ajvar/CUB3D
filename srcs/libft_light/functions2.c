@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:27:15 by jcueille          #+#    #+#             */
-/*   Updated: 2020/07/06 14:44:00 by jcueille         ###   ########.fr       */
+/*   Updated: 2020/09/08 18:31:14 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,24 @@ int					ft_pos_check(char c)
 		s++;
 	}
 	return (0);
+}
+
+void				ft_trim(char *s)
+{
+	int				i;
+	int				pos;
+
+	i = -1;
+	pos = 0;
+	if (s == NULL)
+		return ;
+	while (s[++i])
+	{
+		if (s[i] == ' ')
+			pos = i;
+		if (pos > 0 && s[i] != ' ')
+			ft_error("character after space in .cub");
+	}
+	if (pos != 0)
+		s[pos] = '\0';
 }

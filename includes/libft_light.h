@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 18:24:04 by jcueille          #+#    #+#             */
-/*   Updated: 2020/07/03 14:43:14 by jcueille         ###   ########.fr       */
+/*   Updated: 2020/09/08 14:17:03 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int					ft_atoi(char *s);
 void				*ft_memcpy(void *dst, const void *src, int n);
 int					ft_strncmp(const char *s1, const char *s2, int n);
 int					ft_isdigit(char *s);
+void                ft_trim(char *s);
 
 #endif
